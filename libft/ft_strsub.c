@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 20:38:07 by ggane             #+#    #+#             */
-/*   Updated: 2016/04/25 09:02:35 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/27 12:39:49 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	unsigned int	i;
 
 	i = 0;
-	if (!(sub = (char *)ft_memalloc(len + 1)) || !s)
+	if (!s || !(sub = (char *)ft_memalloc(len + 1)))
 		return (NULL);
 	while (i < len)
 	{

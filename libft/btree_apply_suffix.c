@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   btree_apply_suffix.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/21 07:49:14 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/24 21:34:56 by ggane            ###   ########.fr       */
+/*   Created: 2016/02/02 19:07:13 by ggane             #+#    #+#             */
+/*   Updated: 2016/06/04 14:09:05 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl(char const *s)
+void	btree_apply_suffix(t_btree *root, void (*applyf)(void *))
 {
-	char	new_line;
-
-	new_line = '\n';
-	if (!s)
-		return ;
-	write(1, s, ft_strlen(s));
-	write(1, &new_line, 1);
+	if (is_empty(root))
+	{
+		btree_apply_suffix(root->left, applyf);
+		btree_apply_suffix(root->right, applyf);
+		applyf(root->item);
+	}
 }

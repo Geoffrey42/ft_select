@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 10:45:03 by ggane             #+#    #+#             */
-/*   Updated: 2016/05/02 11:45:00 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/28 10:00:12 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
-# include <stdio.h>
+# define BUFF_SIZE 32
 
 typedef struct		s_list
 {
@@ -24,6 +24,19 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct		s_btree
+{
+	struct s_btree	*left;
+	struct s_btree	*right;
+	void			*item;
+}					t_btree;
+
+typedef struct		s_cell
+{
+	char			*stock;
+	int				prev_fd;
+}					t_cell;
 
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
@@ -93,10 +106,31 @@ void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
+int					is_empty(t_btree *tree);
+void				btree_delete(t_btree *tree);
+t_btree				*btree_create_node(void *item);
+void				btree_insert_data(t_btree **root, void *item,
+					int (*cmpf)(void *, void *));
+void				*btree_search_item(t_btree *root, void *data_ref,
+					int (*cmpf)(void *, void *));
+void				btree_apply_prefix(t_btree *root, void (*applyf)(void *));
+void				btree_apply_infix(t_btree *root, void (*applyf)(void *));
+void				btree_apply_rev_infix(t_btree *root,
+					void (*applyf)(void *));
+void				btree_apply_suffix(t_btree *root, void (*applyf)(void *));
+
 int					ft_abs(int nb);
 int					ft_islower(int c);
 int					ft_isupper(int c);
 void				ft_putnbr_base(int nbr, char *base);
 char				*ft_itoa_base(int value, int base);
+int					get_next_line(const int fd, char **line);
+char				**copy_array_str(char **origin);
+char				*create_pathname(char *daddy, char *son);
+char				*copy_str_from_array(char **origin, char *target);
+char				**add_str_to_array(char **source, char *target);
+void				erase_char_array(char **array);
+size_t				len_till_c(char *src, int c);
+void				ft_putnbrdl(int n);
 
 #endif

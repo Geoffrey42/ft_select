@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   is_empty.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/21 07:49:14 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/24 21:34:56 by ggane            ###   ########.fr       */
+/*   Created: 2016/06/04 14:30:34 by ggane             #+#    #+#             */
+/*   Updated: 2016/06/04 14:30:36 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl(char const *s)
+int		is_empty(t_btree *tree)
 {
-	char	new_line;
-
-	new_line = '\n';
-	if (!s)
-		return ;
-	write(1, s, ft_strlen(s));
-	write(1, &new_line, 1);
+	if (tree == NULL)
+		return (0);
+	return (1);
 }

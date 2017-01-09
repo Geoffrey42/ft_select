@@ -6,12 +6,12 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/01/09 10:10:27 by ggane            ###   ########.fr        #
+#    Updated: 2017/01/09 17:17:30 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= ft_select
-SRC=
+SRC= src/main.c
 CC= gcc
 CFLAGS= -Wall -Werror -Wextra
 INC= inc

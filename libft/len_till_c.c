@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   len_till_c.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/21 07:49:14 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/24 21:34:56 by ggane            ###   ########.fr       */
+/*   Created: 2016/10/12 13:30:58 by ggane             #+#    #+#             */
+/*   Updated: 2016/12/01 09:27:32 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl(char const *s)
+size_t	len_till_c(char *src, int c)
 {
-	char	new_line;
+	size_t	i;
 
-	new_line = '\n';
-	if (!s)
-		return ;
-	write(1, s, ft_strlen(s));
-	write(1, &new_line, 1);
+	i = 0;
+	if (!src)
+		return (0);
+	while (src[i])
+	{
+		if (src[i] == c)
+			return (i);
+		i++;
+	}
+	return (0);
 }

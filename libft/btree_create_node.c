@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   btree_create_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/21 07:49:14 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/24 21:34:56 by ggane            ###   ########.fr       */
+/*   Created: 2016/02/02 18:16:00 by ggane             #+#    #+#             */
+/*   Updated: 2016/06/04 14:09:45 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl(char const *s)
+t_btree		*btree_create_node(void *item)
 {
-	char	new_line;
+	t_btree	*new;
 
-	new_line = '\n';
-	if (!s)
-		return ;
-	write(1, s, ft_strlen(s));
-	write(1, &new_line, 1);
+	new = NULL;
+	new = malloc(sizeof(t_btree));
+	if (new)
+	{
+		new->left = NULL;
+		new->right = NULL;
+		new->item = item;
+	}
+	return (new);
 }

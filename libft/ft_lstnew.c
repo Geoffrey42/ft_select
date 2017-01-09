@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/21 08:46:30 by ggane             #+#    #+#             */
-/*   Updated: 2016/04/22 08:10:45 by ggane            ###   ########.fr       */
+/*   Updated: 2016/11/06 21:25:58 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 	{
 		if (content != NULL)
 		{
-			new->content = (void *)malloc(sizeof(void) * content_size + 1);
+			new->content = (void *)ft_memalloc(sizeof(void) * content_size + 1);
 			if (new->content == NULL)
 				return (NULL);
 			ft_memcpy(new->content, content, content_size);

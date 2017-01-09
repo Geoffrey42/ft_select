@@ -6,13 +6,13 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 17:33:06 by ggane             #+#    #+#             */
-/*   Updated: 2016/04/23 14:30:40 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/19 15:00:14 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		combien_de_mots(char const *s, char c)
+static int		get_word_nb(char const *s, char c)
 {
 	int		nb_mots;
 	int		i;
@@ -23,14 +23,14 @@ static int		combien_de_mots(char const *s, char c)
 	{
 		if (i == 0 && s[i] != c)
 			nb_mots++;
-		if (s[i] != c && s[i - 1] == c && i - 1 >= 0)
+		if (s[i] != c && (i > 0 && s[i - 1] == c))
 			nb_mots++;
 		i++;
 	}
 	return (nb_mots);
 }
 
-static char		*avance_dans_str(char **ptr, char c, int i)
+static char		*walkthrough_str(char **ptr, char c, int i)
 {
 	char	*mot;
 
@@ -55,7 +55,7 @@ static char		*avance_dans_str(char **ptr, char c, int i)
 	return (mot);
 }
 
-static char		*isole_mot(char *mot, size_t size)
+static char		*isolate_word(char *mot, size_t size)
 {
 	char	*tmp;
 
@@ -67,7 +67,7 @@ static char		*isole_mot(char *mot, size_t size)
 	return (mot);
 }
 
-static size_t	taille_mot(char *mot, char c)
+static size_t	cut_word(char *mot, char c)
 {
 	size_t	size;
 
@@ -89,14 +89,14 @@ char			**ft_strsplit(char const *s, char c)
 		return (NULL);
 	i = 0;
 	ptr_s = (char *)s;
-	nb_mots = combien_de_mots(s, c);
-	if (!(split = (char **)malloc(sizeof(char *) * nb_mots + 1)))
+	nb_mots = get_word_nb(s, c);
+	if (!(split = (char **)ft_memalloc(sizeof(*split) * (nb_mots + 1))))
 		return (NULL);
 	while (i < nb_mots)
 	{
-		split[i] = avance_dans_str(&ptr_s, c, i);
-		size = taille_mot(split[i], c);
-		split[i] = isole_mot(split[i], size);
+		split[i] = walkthrough_str(&ptr_s, c, i);
+		size = cut_word(split[i], c);
+		split[i] = isolate_word(split[i], size);
 		i++;
 	}
 	split[i] = NULL;

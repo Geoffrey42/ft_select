@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_select.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/21 07:49:14 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/24 21:34:56 by ggane            ###   ########.fr       */
+/*   Created: 2017/01/09 16:41:21 by ggane             #+#    #+#             */
+/*   Updated: 2017/01/09 17:11:56 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_SELECT_H
+# define FT_SELECT_H
 
-void	ft_putendl(char const *s)
-{
-	char	new_line;
+# include "libft.h"
+# include <term.h>
 
-	new_line = '\n';
-	if (!s)
-		return ;
-	write(1, s, ft_strlen(s));
-	write(1, &new_line, 1);
-}
+#endif

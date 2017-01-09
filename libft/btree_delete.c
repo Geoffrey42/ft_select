@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test00.c                                           :+:      :+:    :+:   */
+/*   btree_delete.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/09 14:53:31 by ggane             #+#    #+#             */
-/*   Updated: 2017/01/09 14:56:53 by ggane            ###   ########.fr       */
+/*   Created: 2016/06/28 10:48:27 by ggane             #+#    #+#             */
+/*   Updated: 2016/06/28 11:25:56 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <termcap.h>
+#include "libft.h"
 
-int		main(void)
+void	btree_delete(t_btree *tree)
 {
-	return (0);
+	t_btree	del_left;
+	t_btree	del_right;
+
+	del_left = *tree->left;
+	del_right = *tree->right;
+	if (!is_empty(tree))
+	{
+		btree_delete(&del_left);
+		btree_delete(&del_right);
+		free((void *)tree);
+		tree = NULL;
+	}
 }

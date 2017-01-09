@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   erase_char_array.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/21 07:49:14 by ggane             #+#    #+#             */
-/*   Updated: 2016/10/24 21:34:56 by ggane            ###   ########.fr       */
+/*   Created: 2016/11/15 10:56:00 by ggane             #+#    #+#             */
+/*   Updated: 2016/12/28 10:13:13 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl(char const *s)
+void	erase_char_array(char **array)
 {
-	char	new_line;
+	int		i;
 
-	new_line = '\n';
-	if (!s)
+	i = 0;
+	if (!array)
 		return ;
-	write(1, s, ft_strlen(s));
-	write(1, &new_line, 1);
+	while (array[i])
+	{
+		ft_strdel(&array[i]);
+		i++;
+	}
+	free(array);
+	array = NULL;
 }

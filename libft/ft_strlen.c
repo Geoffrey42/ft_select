@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 16:52:43 by ggane             #+#    #+#             */
-/*   Updated: 2016/04/07 16:58:39 by ggane            ###   ########.fr       */
+/*   Updated: 2016/12/19 00:20:35 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlen(const char *s)
 	unsigned int	size;
 
 	size = 0;
+	if (!s)
+		return (0);
 	while (s[size])
 		size++;
 	return (size);
