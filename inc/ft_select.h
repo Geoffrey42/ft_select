@@ -14,6 +14,13 @@
 # define FT_SELECT_H
 
 # include "libft.h"
+
+# ifdef __linux__
+# include <termcap.h>
+# endif
+
+# ifdef __APPLE__
 # include <term.h>
+# endif
 
 #endif
