@@ -10,8 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_select.h"
+#ifdef __linux__
+#include <termcap.h>
+#endif
+
+#ifdef __APPLE__
+#include <term.h>
+#endif
+
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 char	*get_var_value(char *env)
 {
@@ -110,15 +119,9 @@ void	get_screen_size(void)
 	printf("hauteur : (%d)\n", hauteur);
 }
 
-void		display_keys(size_t size)
+/*void		display_keys(void)
 {
-	char	*buffer;
-	
-	if (!(buffer = (char *)malloc(sizeof(char) * size)))
-		return ;
-	if (tgetstr("kl", &buffer))
-		printf("user type left-arrow key\n");
-}
+}*/
 
 int		main(int ac, char **av, char **env)
 {
@@ -127,24 +130,16 @@ int		main(int ac, char **av, char **env)
 	char	*buffer;
 	size_t	size;
 	char	*capability;
-	int	i;
 
-	i = 5;
 	size = find_termcap_description(env);
 	if (!(buffer = (char *)malloc(sizeof(char) * size)))
-		return (1);
 	get_screen_size();
 	capability = tgetstr("ks", &buffer);
 	printf("buffer : [%s]\n", buffer);
 	printf("capability : [%s]\n", capability);
-	if (!capability)
-		printf("capability is not provided\n");
-	else
-		printf("capability is provided\n");
-	while (i > 0)
+	while (1)
 	{
-		display_keys(size);
-		i--;
+		//display_keys(description);
 	}
 	return (0);
 }

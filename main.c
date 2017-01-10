@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_select.h"
-#include <stdio.h>
 
 char	*get_var_value(char *env)
 {
@@ -66,37 +65,37 @@ char	*get_term(char **env)
 		var_name = get_var_name(env[i]);
 		if (!strcmp(var_name, "TERM"))
 		{
-			printf("var_name : [%s]\n", var_name);
-			free(var_name);
-			var_name = NULL;
+			ft_putstr("var_name : [");
+			ft_putstr(var_name);
+			ft_putendl("]");
+			ft_strdel(&var_name);
 			return (get_var_value(env[i]));
 		}
-		free(var_name);
-		var_name = NULL;
+		ft_strdel(&var_name);
 		i++;
 	}
 	return (NULL);
 }
 
-size_t	find_termcap_description(char **env)
+int		find_termcap_description(char **env)
 {
 	char	term_buffer[2048];
 	char	*term_type;
 	int		status;
 
-	bzero(term_buffer, 2048);
 	term_type = get_term(env);
-	printf("term_type : [%s]\n", term_type);
+	ft_putstr("term_type : [");
+	ft_putstr(term_type);
+	ft_putendl("]");
 	status = tgetent(term_buffer, term_type);
 	if (!status)
-		printf("term_type is not defined.\n");
+		ft_putstr("term_type is not defined.\n");
 	if (status < 0)
-		printf("Could not access to termcap DB.\n");
+		ft_putstr("Could not access to termcap DB.\n");
 	if (status == 1)
-		printf("Access to termcap DB granted.\n");
-	free(term_type);
-	term_type = NULL;
-	return (strlen(term_buffer));
+		ft_putstr("Access to termcap DB granted.\n");
+	ft_strdel(&term_type);
+	return (status);
 }
 
 void	get_screen_size(void)
@@ -106,45 +105,18 @@ void	get_screen_size(void)
 
 	largeur = tgetnum("co");
 	hauteur = tgetnum("li");
-	printf("largeur : (%d)\n", largeur);
-	printf("hauteur : (%d)\n", hauteur);
-}
-
-void		display_keys(size_t size)
-{
-	char	*buffer;
-	
-	if (!(buffer = (char *)malloc(sizeof(char) * size)))
-		return ;
-	if (tgetstr("kl", &buffer))
-		printf("user type left-arrow key\n");
+	ft_putstr("largeur : ");
+	ft_putnbrdl(largeur);
+	ft_putstr("hauteur : ");
+	ft_putnbrdl(hauteur);
 }
 
 int		main(int ac, char **av, char **env)
 {
 	(void)ac;
 	(void)av;
-	char	*buffer;
-	size_t	size;
-	char	*capability;
-	int	i;
-
-	i = 5;
-	size = find_termcap_description(env);
-	if (!(buffer = (char *)malloc(sizeof(char) * size)))
+	if (find_termcap_description(env) != 1)
 		return (1);
 	get_screen_size();
-	capability = tgetstr("ks", &buffer);
-	printf("buffer : [%s]\n", buffer);
-	printf("capability : [%s]\n", capability);
-	if (!capability)
-		printf("capability is not provided\n");
-	else
-		printf("capability is provided\n");
-	while (i > 0)
-	{
-		display_keys(size);
-		i--;
-	}
 	return (0);
 }
