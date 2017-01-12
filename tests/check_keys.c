@@ -75,7 +75,7 @@ char	*get_term(char **env)
 		var_name = get_var_name(env[i]);
 		if (!strcmp(var_name, "TERM"))
 		{
-			printf("var_name : [%s]\n", var_name);
+			//printf("var_name : [%s]\n", var_name);
 			free(var_name);
 			var_name = NULL;
 			return (get_var_value(env[i]));
@@ -113,6 +113,7 @@ void	get_screen_size(void)
 	int		largeur;
 	int		hauteur;
 
+	printf("\tstart get_screen_size()");
 	largeur = tgetnum("co");
 	hauteur = tgetnum("li");
 	printf("largeur : (%d)\n", largeur);
@@ -137,9 +138,9 @@ int		main(int ac, char **av, char **env)
 	capability = tgetstr("ks", &buffer);
 	printf("buffer : [%s]\n", buffer);
 	printf("capability : [%s]\n", capability);
-	while (1)
+	/*while (1)
 	{
 		//display_keys(description);
-	}
+	}*/
 	return (0);
 }
