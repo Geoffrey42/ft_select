@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/09 14:46:50 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/09 15:48:07 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/09 16:03:01 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void	find_terminal_description(void)
 	printf("terminal description is found\n");
 }
 
-void	clear_window(void)
+void	check_capability(char *str)
 {
 	char	*capability;
 
-	if (!(capability = tgetstr("cl", NULL)))
+	if (!(capability = tgetstr(str, NULL)))
 		print_err_msg("tgetstr() failed");
 	tputs(capability, 0, ft_putchar);
 }
