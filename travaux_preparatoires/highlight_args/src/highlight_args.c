@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_keys.c                                     :+:      :+:    :+:   */
+/*   highlight_args.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/09 14:46:50 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/10 16:12:32 by ggane            ###   ########.fr       */
+/*   Created: 2017/03/10 09:45:29 by ggane             #+#    #+#             */
+/*   Updated: 2017/03/10 15:56:04 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/ioctl.h>
+#include "libft/libft.h"
 
-int		ft_putchar(int c)
+int		outputchar(int c)
 {
 	return (write(1, &c, 1));
 }
@@ -45,15 +46,6 @@ void	find_terminal_description(void)
 	printf("terminal description is found\n");
 }
 
-void	check_capability(char *str)
-{
-	char	*capability;
-
-	if (!(capability = tgetstr(str, NULL)))
-		print_err_msg("tgetstr() failed");
-	tputs(capability, 0, ft_putchar);
-}
-
 void	put_term_in_raw_mode(struct termios *term)
 {
 	if (tcgetattr(STDIN_FILENO, term) == -1)
@@ -75,51 +67,38 @@ void	put_term_in_cooked_mode(struct termios *term)
 		print_err_msg("tcsetattr() failed");
 }
 
-void	display_keys(void)
+t_list	*copy_av_in_words_list(char **av, int ac)
 {
-	char	buffer[3];
-	int		i;
-	int		j;
+	t_list	*words;
 
-	i = 0;
-	j = 0;
-	while (i < 7)
+	while (ac > 0)
+		ft_lstadd(&words, ft_lstnew(av[ac--], sizeof(char *)));
+	return (words);
+}
+
+void	print_list(t_list *list)
+{
+	while (list)
 	{
-		bzero(buffer, 3);
-		read(STDIN_FILENO, buffer, 3);
-		if (buffer[0] == 27 && buffer[1] == 91)
-		{
-			if (buffer[2] == 65)
-				printf("up arrow key entered\n");
-			if (buffer[2] == 67)
-				printf("right arrow key entered\n");
-			if (buffer[2] == 66)
-				printf("down arrow key entered\n");
-			if (buffer[2] == 68)
-				printf("left arrow key entered\n");
-		}
-		else if (buffer[0] == 27 && buffer[1] == 0 && buffer[2] == 0) /* echap */
-		{
-			printf("echap key entered\n");
-			break ;
-		}
-		while (j < 3)
-		{
-			printf("buffer[%d] : (%d)\n", j, buffer[j]);
-			j++;
-		}
-		j = 0;
-		i++;
+		ft_putendl(list->content);
+		list = list->next;
 	}
 }
 
-int		main(void)
+int		main(int ac, char **av)
 {
-	struct termios	term;
+	/* struct termios	term; */
+	t_list	*words;
 
-	find_terminal_description();
-	put_term_in_raw_mode(&term);
-	display_keys();
-	put_term_in_cooked_mode(&term);
+	if (ac != 4)
+		return (1);
+	words = copy_av_in_words_list(av, ac);
+	print_list(words);
+	/* get_terminal_description(); */
+	/* make_full_screen_window(); */
+	/* put_term_in_raw_mode(&term); */
+	/* display_words(words); */
+	/* exit_full_screen_window(); */
+	/* put_term_in_cooked_mode(&term); */
 	return (0);
 }
