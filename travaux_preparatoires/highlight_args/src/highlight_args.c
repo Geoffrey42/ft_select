@@ -10,14 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <termcap.h>
-#include <term.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <sys/ioctl.h>
-#include "libft/libft.h"
+#include "highlight.h"
 
 int		outputchar(int c)
 {
@@ -30,7 +23,7 @@ void	print_err_msg(char *err_msg)
 	exit(EXIT_FAILURE);
 }
 
-void	find_terminal_description(void)
+void	get_terminal_description(void)
 {
 	char	buffer[2048];
 	char	*term_type;
@@ -71,6 +64,7 @@ t_list	*copy_av_in_words_list(char **av, int ac)
 {
 	t_list	*words;
 
+	words = NULL;
 	while (ac > 0)
 		ft_lstadd(&words, ft_lstnew(av[ac--], sizeof(char *)));
 	return (words);
@@ -78,10 +72,15 @@ t_list	*copy_av_in_words_list(char **av, int ac)
 
 void	print_list(t_list *list)
 {
-	while (list)
+	t_list	*tmp;
+	char	*words;
+
+	tmp = list;
+	while (tmp)
 	{
-		ft_putendl(list->content);
-		list = list->next;
+		words = (char *)tmp->content;
+		ft_putendl(words);
+		tmp = tmp->next;
 	}
 }
 
@@ -94,7 +93,7 @@ int		main(int ac, char **av)
 		return (1);
 	words = copy_av_in_words_list(av, ac);
 	print_list(words);
-	/* get_terminal_description(); */
+	get_terminal_description();
 	/* make_full_screen_window(); */
 	/* put_term_in_raw_mode(&term); */
 	/* display_words(words); */

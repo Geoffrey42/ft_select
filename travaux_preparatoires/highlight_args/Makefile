@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME= highlight
-SRC= src/highlight.c
+SRC= src/highlight_args.c
 CC= gcc
 CFLAGS= -Wall -Werror -Wextra
 INC= inc
