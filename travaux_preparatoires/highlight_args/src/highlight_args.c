@@ -84,6 +84,25 @@ void	print_list(t_list *list)
 	}
 }
 
+void	ask_capability(char *str)	
+{
+	char	*capability;
+
+	if (!(capability = tgetstr(str, NULL)))
+		print_err_msg("tgetstr() failed");
+	tputs(capability, 0, outputchar);
+}
+
+void	make_full_screen_window(void)
+{
+	ask_capability("ti");
+}
+
+void	exit_full_screen_window(void)
+{
+	ask_capability("te");
+}
+
 int		main(int ac, char **av)
 {
 	/* struct termios	term; */
@@ -92,12 +111,13 @@ int		main(int ac, char **av)
 	if (ac != 4)
 		return (1);
 	words = copy_av_in_words_list(av, ac);
-	print_list(words);
 	get_terminal_description();
-	/* make_full_screen_window(); */
+	make_full_screen_window();
+	print_list(words);
 	/* put_term_in_raw_mode(&term); */
 	/* display_words(words); */
-	/* exit_full_screen_window(); */
+	sleep(10);
+	exit_full_screen_window();
 	/* put_term_in_cooked_mode(&term); */
 	return (0);
 }
