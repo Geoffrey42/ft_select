@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 09:45:29 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/10 15:56:04 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/11 13:49:07 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,48 @@ void	exit_full_screen_window(void)
 	ask_capability("te");
 }
 
+int		user_tapes_esc_key(char *buffer)
+{
+	read(STDIN_FILENO, buffer, 3);
+	if (buffer[0] == 27 && buffer[1] == 0 && buffer[2] == 0)
+		return (1);
+	return (0);
+}
+
+int		user_tapes_right_arrow_key(char *buffer)
+{
+	read(STDIN_FILENO, buffer, 3);
+	if (buffer[0] == 27 && buffer[1] == 91 && buffer[2] == 67)
+		return (1);
+	return (0);
+}
+
+void	highlight_next_word(t_list **words_list)
+{
+	t_list	*tmp;
+
+	tmp = *words_list;
+}
+
+void	display_words(t_list *words)
+{
+	t_list	*tmp_words;
+	char	buffer[3];
+
+	tmp_words = words;
+	while (1)
+	{
+		ft_bzero(buffer, 3);
+		if (user_tapes_right_arrow_key(buffer))
+			highlight_next_word(&tmp_words);
+		else if (user_tapes_esc_key(buffer))
+			break ;
+	}
+}
+
 int		main(int ac, char **av)
 {
-	/* struct termios	term; */
+	struct termios	term;
 	t_list	*words;
 
 	if (ac != 4)
@@ -113,11 +152,12 @@ int		main(int ac, char **av)
 	words = copy_av_in_words_list(av, ac);
 	get_terminal_description();
 	make_full_screen_window();
-	print_list(words);
-	/* put_term_in_raw_mode(&term); */
-	/* display_words(words); */
-	sleep(10);
+	/* print_list(words); */
+	put_term_in_raw_mode(&term);
+	display_words(words);
 	exit_full_screen_window();
-	/* put_term_in_cooked_mode(&term); */
+	ft_putstr("lumiere ! ");
+	put_term_in_cooked_mode(&term);
+	ft_putstr("ombre ! ");
 	return (0);
 }
