@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 09:45:29 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/10 15:56:04 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/11 13:49:07 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,20 +70,6 @@ t_list	*copy_av_in_words_list(char **av, int ac)
 	return (words);
 }
 
-void	print_list(t_list *list)
-{
-	t_list	*tmp;
-	char	*words;
-
-	tmp = list;
-	while (tmp)
-	{
-		words = (char *)tmp->content;
-		ft_putendl(words);
-		tmp = tmp->next;
-	}
-}
-
 void	ask_capability(char *str)	
 {
 	char	*capability;
@@ -91,6 +77,29 @@ void	ask_capability(char *str)
 	if (!(capability = tgetstr(str, NULL)))
 		print_err_msg("tgetstr() failed");
 	tputs(capability, 0, outputchar);
+}
+
+void	print_list(t_list *list)
+{
+	t_list	*tmp;
+	char	*words;
+	int	abs;
+	int	ord;
+
+	tmp = list;
+	ask_capability("so");
+	ask_capability("mr");
+	abs = 20;
+	ord = 0;
+	while (tmp)
+	{
+		tputs(tgoto(tgetstr("cm", NULL), abs, ord++), 1, outputchar);
+		words = (char *)tmp->content;
+		ft_putendl(words);
+		tmp = tmp->next;
+	}
+	ask_capability("se");
+	/* ft_putendl("coucou"); */
 }
 
 void	make_full_screen_window(void)
@@ -103,9 +112,62 @@ void	exit_full_screen_window(void)
 	ask_capability("te");
 }
 
-int	main(int ac, char **av)
+int		user_tapes_esc_key(char *buffer)
 {
-	/* struct termios	term; */
+	read(STDIN_FILENO, buffer, 3);
+	if (buffer[0] == 27 && buffer[1] == 0 && buffer[2] == 0)
+		return (1);
+	return (0);
+}
+
+int		user_tapes_right_arrow_key(char *buffer)
+{
+	read(STDIN_FILENO, buffer, 3);
+	if (buffer[0] == 27 && buffer[1] == 91 && buffer[2] == 67)
+		return (1);
+	return (0);
+}
+
+void	highlight_next_word(t_list **words_list)
+{
+	t_list	*tmp;
+
+	tmp = *words_list;
+	(void)tmp;
+}
+
+void	clear_window(void)
+{
+	char	*capability;
+
+	if (!(capability = tgetstr("cl", NULL)))
+		print_err_msg("tgetstr() failed");
+	tputs(capability, 0, outputchar);
+}
+
+void	display_words(t_list *words)
+{
+	t_list	*tmp_words;
+	char	buffer[3];
+
+	tmp_words = words;
+	while (1)
+	{
+		ft_bzero(buffer, 3);
+		if (user_tapes_right_arrow_key(buffer))
+			highlight_next_word(&tmp_words);
+		else if (user_tapes_esc_key(buffer))
+		{
+			clear_window();
+			sleep(5);
+			break ;
+		}
+	}
+}
+
+int		main(int ac, char **av)
+{
+	struct termios	term;
 	t_list	*words;
 
 	if (ac != 4)
@@ -114,10 +176,11 @@ int	main(int ac, char **av)
 	get_terminal_description();
 	make_full_screen_window();
 	print_list(words);
-	/* put_term_in_raw_mode(&term); */
-	/* display_words(words); */
-	sleep(10);
+	put_term_in_raw_mode(&term);
+	display_words(words);
 	exit_full_screen_window();
-	/* put_term_in_cooked_mode(&term); */
+	ft_putstr("lumiere ! ");
+	put_term_in_cooked_mode(&term);
+	ft_putstr("ombre ! ");
 	return (0);
 }

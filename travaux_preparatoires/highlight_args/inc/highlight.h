@@ -10,4 +10,7 @@
 # include <sys/ioctl.h>
 # include "libft.h"
 
+char	*UP;
+char	*BC;
+
 #endif
