@@ -24,15 +24,24 @@
 # include <sys/ioctl.h>
 # include "libft.h"
 
-typedef struct	s_args
+typedef struct	s_cycle
 {
 	char	*name;
 	int	line;
 	int	hover;
 	int	selected;
 	int	number;
-	s_args	*prev;
-	s_args	*next;
-}		t_args;
+	s_cycle	*prev;
+	s_cycle	*next;
+}		t_cycle;
+
+void		open_ft_select_interface(t_cycle *args);
+
+/*
+** list_functions.c
+*/
+
+t_cycle		*stock_arguments(int ac, char **av);
+void		erase_stocked_arguments(t_cycle **args);
 
 #endif
