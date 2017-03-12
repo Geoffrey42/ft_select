@@ -12,7 +12,7 @@
 
 #include "highlight.h"
 
-int		outputchar(int c)
+int	outputchar(int c)
 {
 	return (write(1, &c, 1));
 }
@@ -103,7 +103,7 @@ void	exit_full_screen_window(void)
 	ask_capability("te");
 }
 
-int		main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	/* struct termios	term; */
 	t_list	*words;
