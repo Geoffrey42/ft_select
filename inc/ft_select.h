@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 16:41:21 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/13 19:05:24 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/13 20:22:23 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 # include <sys/ioctl.h>
 # include "libft.h"
+# define KEY_BUFF_SIZE 3
 
 typedef struct		s_dlist
 {
@@ -49,6 +50,12 @@ typedef struct		s_cycle
 */
 
 void				activate_user_selection_mode(t_dlist **args);
+
+/*
+** user_display_functions.c
+*/
+
+void				display_columns(t_dlist **args);
 
 /*
 ** cursor.c
