@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 15:59:44 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/13 16:15:43 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/13 17:28:34 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,9 @@ void		print_dlist(t_dlist *args)
 
 static void	display_formatted(t_cycle *selection)
 {
-	ft_putstr(selection);
-	ft_putchar(' ');
+	ft_putstr(selection->name);
+	if (selection->next)
+		ft_putchar(' ');
 }
 
 void		display_user_selection(t_dlist *args)
@@ -62,7 +63,8 @@ void		display_user_selection(t_dlist *args)
 	selection = args->head;
 	while (selection)
 	{
-		display_formatted(selection);
+		if (selection->selected)
+			display_formatted(selection);
 		selection = selection->next;
 	}
 }
