@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 16:41:21 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/13 16:16:03 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/13 16:55:06 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ typedef struct		s_cycle
 	struct s_cycle	*next;
 }					t_cycle;
 
-void				open_ft_select_interface(t_dlist *args);
+void				open_ft_select_interface();
+void				close_ft_select_interface();
 
 /*
 ** print_list_functions.c
@@ -62,5 +63,28 @@ t_dlist				*stock_arguments(int ac, char **av);
 */
 
 void				erase_stocked_arguments(t_dlist **args);
+
+/*
+** generic_display_functions.c
+*/
+
+int					outputchar(int c);
+void				print_err_msg(char *err_msg);
+
+/*
+** terminal_basic_functions.c
+*/
+
+void				get_terminal_description(void);
+void				put_term_in_raw_mode(struct termios *term);
+void				put_term_in_cooked_mode(struct termios *term);
+void				ask_capability(char *str);
+
+/*
+** interface.c
+*/
+
+void				open_ft_select_interface(struct termios *term);
+void				close_ft_select_interface(struct termios *term);
 
 #endif
