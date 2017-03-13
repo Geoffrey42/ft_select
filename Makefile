@@ -6,13 +6,15 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/03/13 14:28:04 by ggane            ###   ########.fr        #
+#    Updated: 2017/03/13 16:01:30 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= ft_select
 SRC= src/main.c \
-	 src/list_functions.c
+	 src/create_list_functions.c \
+	 src/print_list_functions.c \
+	 src/erase_list_functions.c
 CC= gcc
 CFLAGS= -Wall -Werror -Wextra
 INC= inc

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_functions.c                                   :+:      :+:    :+:   */
+/*   create_list_functions.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 11:14:12 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/13 14:48:28 by ggane            ###   ########.fr       */
+/*   Created: 2017/03/13 15:42:55 by ggane             #+#    #+#             */
+/*   Updated: 2017/03/13 15:57:17 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static t_cycle		*create_new_element(char *arg, int nb)
 		return (NULL);
 	new->name = ft_strdup(arg);
 	new->line = -1;
-	new->hover = -1;
-	new->selected = -1;
+	new->hover = 0;
+	new->selected = 0;
 	new->node_number = nb;
 	new->next = NULL;
 	new->prev = NULL;
@@ -73,63 +73,3 @@ t_dlist		*stock_arguments(int ac, char **av)
 	return (args);
 }
 
-static void	display_info(t_cycle *element)
-{
-	ft_putstr("name : ");
-	ft_putendl(element->name);
-	ft_putstr("line : ");
-	ft_putnbrdl(element->line);
-	ft_putstr("hover : ");
-	ft_putnbrdl(element->hover);
-	ft_putstr("selected : ");
-	ft_putnbrdl(element->selected);
-	ft_putstr("node_number : ");
-	ft_putnbrdl(element->node_number);
-	ft_putendl("----------");
-}
-
-void		print_dlist(t_dlist *args)
-{
-	t_cycle	*browse;
-
-	if (!args)
-	{
-		ft_putendl("list is empty");
-		return ;
-	}
-	browse = args->head;
-	ft_putstr("list lenght : ");
-	ft_putnbrdl(args->lenght);
-	ft_putendl("----------");
-	while (browse)
-	{
-		display_info(browse);
-		browse = browse->next;
-	}
-}
-
-static void		delete_cycle_list(t_dlist **args)
-{
-	t_cycle	*browse;
-	t_cycle	*tmp;
-
-	browse = (*args)->head;
-	while (browse)
-	{
-		tmp = browse;
-		ft_strdel(&(tmp->name));
-		ft_memdel((void **)&tmp);
-		browse = browse->next;
-	}
-}
-
-static void		delete_dlist(t_dlist **args)
-{
-	ft_memdel((void **)args);
-}
-
-void		erase_stocked_arguments(t_dlist **args)
-{
-	delete_cycle_list(args);
-	delete_dlist(args);
-}

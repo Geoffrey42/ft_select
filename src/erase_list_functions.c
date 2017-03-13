@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   erase_list_functions.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 11:13:16 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/13 16:11:44 by ggane            ###   ########.fr       */
+/*   Created: 2017/03/13 15:40:20 by ggane             #+#    #+#             */
+/*   Updated: 2017/03/13 15:40:39 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-int	main(int ac, char **av)
+static void		delete_cycle_list(t_dlist **args)
 {
-	t_dlist		*args;
+	t_cycle	*browse;
+	t_cycle	*tmp;
 
-	args = stock_arguments(ac, av);
-	print_dlist(args);
-	/* open_ft_select_interface(); */
-	/* activate_user_selection_mode(&args); */
-	/* close_ft_select_interface(); */
-	/* display_user_selection(args); */
-	erase_stocked_arguments(&args);
-	print_dlist(args);
-	return (0);
+	browse = (*args)->head;
+	while (browse)
+	{
+		tmp = browse;
+		ft_strdel(&(tmp->name));
+		ft_memdel((void **)&tmp);
+		browse = browse->next;
+	}
+}
+
+static void		delete_dlist(t_dlist **args)
+{
+	ft_memdel((void **)args);
+}
+
+void		erase_stocked_arguments(t_dlist **args)
+{
+	delete_cycle_list(args);
+	delete_dlist(args);
 }
