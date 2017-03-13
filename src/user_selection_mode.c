@@ -22,7 +22,21 @@ static int	user_doesnt_quit_ft_select(char *keyboard)
 	return (1);
 }
 
-void	activate_user_selection_mode(t_dlist **args)
+static int	is_arrow_key(int key)
+{
+	if (key == 65 || key == 66 || key == 67 || key == 68)
+		return (1);
+	return (0);
+}
+
+static int	user_inputs_special_key(char *keyboard)
+{
+	if (keyboard[0] == 27 && keyboard[1] == 91 && is_arrow_key(keyboard[2]))
+		return (1);
+	return (0);
+}
+
+void		activate_user_selection_mode(t_dlist **args)
 {
 	char	keyboard_buffer[KEY_BUFF_SIZE];
 
