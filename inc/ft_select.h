@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 16:41:21 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/13 13:24:40 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/13 14:24:30 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,14 @@ typedef struct		s_cycle
 	struct s_cycle	*next;
 }					t_cycle;
 
-void				open_ft_select_interface(t_cycle *args);
+void				open_ft_select_interface(t_dlist *args);
 
 /*
 ** list_functions.c
 */
 
-t_cycle				*stock_arguments(int ac, char **av);
-void				erase_stocked_arguments(t_cycle **args);
+t_dlist				*stock_arguments(int ac, char **av);
+void				print_dlist(t_dlist *args);
+void				erase_stocked_arguments(t_dlist **args);
 
 #endif
