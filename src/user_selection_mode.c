@@ -42,6 +42,7 @@ void		activate_user_selection_mode(t_dlist **args)
 
 	ft_bzero(keyboard_buffer, KEY_BUFF_SIZE);
 	get_screen_size(args);
+	place_cursor_on_first(args);
 	display_columns(args);
 	while (user_doesnt_quit_ft_select(keyboard_buffer))
 	{

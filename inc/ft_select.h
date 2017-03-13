@@ -72,6 +72,7 @@ void				display_columns(t_dlist **args);
 
 void				turn_cursor_invisible(void);
 void				turn_cursor_visible(void);
+void				place_cursor_on_first(t_dlist **args);
 
 /*
 ** print_list_functions.c

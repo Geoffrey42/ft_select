@@ -21,3 +21,8 @@ void	turn_cursor_visible(void)
 {
 	ask_capability("ve");
 }
+
+void	place_cursor_on_first(t_dlist **args)
+{
+	(*args)->head->hover = 1;
+}
