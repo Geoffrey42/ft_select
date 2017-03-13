@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 15:42:55 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/13 18:46:07 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/13 20:54:36 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static t_dlist		*create_dlist(void)
 	if (!(new = (t_dlist *)malloc(sizeof(*new))))
 		return (NULL);
 	new->list_length = 0;
+	new->return_key = 0;
 	new->head = NULL;
 	new->tail = NULL;
 	return (new);

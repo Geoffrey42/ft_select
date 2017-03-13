@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 16:41:21 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/13 20:49:09 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/13 20:53:40 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct		s_dlist
 	int				list_length;
 	int				screen_length;
 	int				screen_width;
+	int				return_key;
 	struct s_cycle	*head;
 	struct s_cycle	*tail;
 }					t_dlist;
