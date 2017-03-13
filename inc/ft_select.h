@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 16:41:21 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/13 18:43:28 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/13 19:05:24 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void				ask_capability(char *str);
 ** interface.c
 */
 
+void				clear_window(void);
 void				open_ft_select_interface(struct termios *term);
 void				close_ft_select_interface(struct termios *term);
 
