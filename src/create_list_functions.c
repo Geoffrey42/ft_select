@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 15:42:55 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/13 15:57:17 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/13 17:33:10 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static t_cycle		*create_new_element(char *arg, int nb)
 	return (new);
 }
 
-static void		append_list(t_dlist **args, t_cycle *new)
+static void			append_list(t_dlist **args, t_cycle *new)
 {
 	if ((*args)->tail)
 	{
@@ -56,7 +56,7 @@ static void		append_list(t_dlist **args, t_cycle *new)
 	(*args)->lenght++;
 }
 
-t_dlist		*stock_arguments(int ac, char **av)
+t_dlist				*stock_arguments(int ac, char **av)
 {
 	t_dlist	*args;
 	int		i;
@@ -72,4 +72,3 @@ t_dlist		*stock_arguments(int ac, char **av)
 	}
 	return (args);
 }
-

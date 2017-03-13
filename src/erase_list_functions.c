@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 15:40:20 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/13 15:40:39 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/13 17:31:08 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void		delete_dlist(t_dlist **args)
 	ft_memdel((void **)args);
 }
 
-void		erase_stocked_arguments(t_dlist **args)
+void			erase_stocked_arguments(t_dlist **args)
 {
 	delete_cycle_list(args);
 	delete_dlist(args);

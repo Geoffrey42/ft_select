@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 16:42:31 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/13 17:18:41 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/13 17:32:55 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	put_term_in_cooked_mode(struct termios *term)
 		exit_with_err_msg("tcsetattr() failed");
 }
 
-void	ask_capability(char *str)	
+void	ask_capability(char *str)
 {
 	char	*capability;
 

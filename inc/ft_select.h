@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 16:41:21 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/13 17:24:19 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/13 17:33:58 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define FT_SELECT_H
 
 # ifdef __linux__
-# include <termcap.h>
+#  include <termcap.h>
 # endif
 
 # ifdef __APPLE__
-# include <term.h>
+#  include <term.h>
 # endif
 
 # include <sys/ioctl.h>
