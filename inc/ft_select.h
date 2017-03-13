@@ -21,6 +21,7 @@
 #  include <term.h>
 # endif
 
+# include <termios.h>
 # include <sys/ioctl.h>
 # include "libft.h"
 # define KEY_BUFF_SIZE 3
