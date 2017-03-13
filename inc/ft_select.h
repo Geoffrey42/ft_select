@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 16:41:21 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/13 17:33:58 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/13 18:15:52 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,19 @@ typedef struct		s_cycle
 	struct s_cycle	*prev;
 	struct s_cycle	*next;
 }					t_cycle;
+
+/*
+** user_selection_mode.c
+*/
+
+void				activate_user_selection_mode(t_dlist **args);
+
+/*
+** cursor.c
+*/
+
+void				turn_cursor_invisible(void);
+void				turn_cursor_visible(void);
 
 /*
 ** print_list_functions.c

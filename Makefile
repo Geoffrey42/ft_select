@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/03/13 16:56:46 by ggane            ###   ########.fr        #
+#    Updated: 2017/03/13 18:12:51 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ SRC= src/main.c \
 	 src/print_list_functions.c \
 	 src/generic_display_functions.c \
 	 src/terminal_basic_functions.c \
+	 src/user_selection_mode.c \
 	 src/interface.c \
+	 src/cursor.c \
 	 src/erase_list_functions.c
 CC= gcc
 CFLAGS= -Wall -Werror -Wextra
