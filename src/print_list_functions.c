@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 15:59:44 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/13 17:28:34 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/13 18:59:23 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void	display_info(t_cycle *element)
 	ft_putnbrdl(element->line);
 	ft_putstr("hover : ");
 	ft_putnbrdl(element->hover);
-	ft_putstr("selected : ");
-	ft_putnbrdl(element->selected);
+	ft_putstr("is_select : ");
+	ft_putnbrdl(element->is_select);
 	ft_putstr("node_number : ");
 	ft_putnbrdl(element->node_number);
 	ft_putendl("----------");
@@ -37,8 +37,8 @@ void		print_dlist(t_dlist *args)
 		return ;
 	}
 	browse = args->head;
-	ft_putstr("list lenght : ");
-	ft_putnbrdl(args->lenght);
+	ft_putstr("list length : ");
+	ft_putnbrdl(args->list_length);
 	ft_putendl("----------");
 	while (browse)
 	{
@@ -47,24 +47,24 @@ void		print_dlist(t_dlist *args)
 	}
 }
 
-static void	display_formatted(t_cycle *selection)
+static void	display_formatted(t_cycle *words)
 {
-	ft_putstr(selection->name);
-	if (selection->next)
+	ft_putstr(words->name);
+	if (words->next)
 		ft_putchar(' ');
 }
 
 void		display_user_selection(t_dlist *args)
 {
-	t_cycle	*selection;
+	t_cycle	*words;
 
 	if (!args)
 		return ;
-	selection = args->head;
-	while (selection)
+	words = args->head;
+	while (words)
 	{
-		if (selection->selected)
-			display_formatted(selection);
-		selection = selection->next;
+		if (words->is_select)
+			display_formatted(words);
+		words = words->next;
 	}
 }

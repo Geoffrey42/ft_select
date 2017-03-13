@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 15:40:20 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/13 17:31:08 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/13 18:57:05 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@ static void		delete_cycle_list(t_dlist **args)
 {
 	t_cycle	*browse;
 	t_cycle	*tmp;
+	char	*name_to_delete;
 
 	browse = (*args)->head;
 	while (browse)
 	{
 		tmp = browse;
-		ft_strdel(&(tmp->name));
+		name_to_delete = tmp->name;
+		ft_strdel(&name_to_delete);
 		ft_memdel((void **)&tmp);
 		browse = browse->next;
 	}

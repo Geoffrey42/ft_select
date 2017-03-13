@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 15:42:55 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/13 18:02:41 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/13 18:46:07 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_dlist		*create_dlist(void)
 
 	if (!(new = (t_dlist *)malloc(sizeof(*new))))
 		return (NULL);
-	new->lenght = 0;
+	new->list_length = 0;
 	new->head = NULL;
 	new->tail = NULL;
 	return (new);
@@ -33,7 +33,7 @@ static t_cycle		*create_new_element(char *arg, int nb)
 	new->name = ft_strdup(arg);
 	new->line = -1;
 	new->hover = 0;
-	new->selected = 0;
+	new->is_select = 0;
 	new->node_number = nb;
 	new->next = NULL;
 	new->prev = NULL;
@@ -53,7 +53,7 @@ static void			append_list(t_dlist **args, t_cycle *new)
 		(*args)->head = new;
 		(*args)->tail = new;
 	}
-	(*args)->lenght++;
+	(*args)->list_length++;
 }
 
 t_dlist				*stock_arguments(int ac, char **av)
