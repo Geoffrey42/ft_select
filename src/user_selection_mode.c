@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 18:03:45 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/13 20:22:28 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/13 20:31:53 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	activate_user_selection_mode(t_dlist **args)
 	char	keyboard_buffer[KEY_BUFF_SIZE];
 
 	ft_bzero(keyboard_buffer, KEY_BUFF_SIZE);
+	get_screen_size(args);
 	display_columns(args);
 	while (user_doesnt_quit_ft_select(keyboard_buffer))
 	{

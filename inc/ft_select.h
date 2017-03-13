@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 16:41:21 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/13 20:22:23 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/13 20:49:09 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ typedef struct		s_cycle
 	struct s_cycle	*prev;
 	struct s_cycle	*next;
 }					t_cycle;
+
+/*
+** screen_size_functions.c
+*/
+
+int					user_resizes_his_screen(t_dlist **args);
+void				get_screen_size(t_dlist **args);
 
 /*
 ** user_selection_mode.c
