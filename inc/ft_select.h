@@ -33,6 +33,7 @@ typedef struct		s_dlist
 	int				screen_width;
 	int				return_key;
 	struct s_cycle	*head;
+	struct s_cycle	*cursor_position;
 	struct s_cycle	*tail;
 }					t_dlist;
 
@@ -52,7 +53,7 @@ typedef struct		s_cycle
 */
 
 int					user_resizes_his_screen(t_dlist **args);
-void				get_screen_size(t_dlist **args);
+void					get_screen_size(t_dlist **args);
 
 /*
 ** user_selection_mode.c

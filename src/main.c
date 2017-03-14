@@ -19,9 +19,7 @@ int	main(int ac, char **av)
 
 	args = stock_arguments(ac, av);
 	open_ft_select_interface(&terminal);
-	/* activate_user_selection_mode(&args); */
-	print_dlist(args);
-	sleep(10);
+	activate_user_selection_mode(&args);
 	close_ft_select_interface(&terminal);
 	/* display_user_selection(args); */
 	erase_stocked_arguments(&args);

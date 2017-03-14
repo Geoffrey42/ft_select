@@ -36,6 +36,30 @@ static int	user_inputs_special_key(char *keyboard)
 	return (0);
 }
 
+static void	do_as_user_asks(t_dlist **args, char *keyboard)
+{
+	t_cycle		*cursor;
+
+	ft_putendl("---");
+	ft_putstr((*args)->cursor_position->name);
+	ft_putendl("---");
+	cursor = (*args)->cursor_position;
+	if (keyboard[2] == 65 && cursor->prev)
+	{
+		cursor->hover = 0;
+		cursor = cursor->prev;
+		cursor->hover = 1;
+		(*args)->cursor_position = cursor;
+	}
+	if (keyboard[2] == 66 && cursor->next)
+	{
+		cursor->hover = 0;
+		cursor = cursor->next;
+		cursor->hover = 1;
+		(*args)->cursor_position = cursor;
+	}
+}
+
 void		activate_user_selection_mode(t_dlist **args)
 {
 	char	keyboard_buffer[KEY_BUFF_SIZE];
@@ -48,11 +72,15 @@ void		activate_user_selection_mode(t_dlist **args)
 	{
 		ft_bzero(keyboard_buffer, KEY_BUFF_SIZE);
 		if (user_resizes_his_screen(args))
-		{
 			clear_window();
-			display_columns(args);
-		}
 		if (user_inputs_special_key(keyboard_buffer))
+		{
+			ft_putendl("user inputs arrow key");
 			do_as_user_asks(args, keyboard_buffer);
+		}
+		clear_window();
+		display_columns(args);
+		clear_window();
+		print_dlist(*args);
 	}
 }

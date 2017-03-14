@@ -21,6 +21,7 @@ static t_dlist		*create_dlist(void)
 	new->list_length = 0;
 	new->return_key = 0;
 	new->head = NULL;
+	new->cursor_position = NULL;
 	new->tail = NULL;
 	return (new);
 }

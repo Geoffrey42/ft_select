@@ -17,6 +17,8 @@ SRC= src/main.c \
 	 src/generic_display_functions.c \
 	 src/terminal_basic_functions.c \
 	 src/user_selection_mode.c \
+	 src/user_display_functions.c \
+	 src/screen_size_functions.c \
 	 src/interface.c \
 	 src/cursor.c \
 	 src/erase_list_functions.c

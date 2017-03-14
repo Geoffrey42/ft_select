@@ -25,4 +25,5 @@ void	turn_cursor_visible(void)
 void	place_cursor_on_first(t_dlist **args)
 {
 	(*args)->head->hover = 1;
+	(*args)->cursor_position = (*args)->head;
 }

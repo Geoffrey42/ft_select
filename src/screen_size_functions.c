@@ -23,8 +23,8 @@ int		user_resizes_his_screen(t_dlist **args)
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &screen_size);
 	if (length != screen_size.ws_row && width != screen_size.ws_col)
 	{
-		(*args)->screen_length = window_size.ws_row;
-		(*args)->screen_width = window_size.ws_col;
+		(*args)->screen_length = screen_size.ws_row;
+		(*args)->screen_width = screen_size.ws_col;
 		return (1);
 	}
 	return (0);
@@ -35,6 +35,6 @@ void	get_screen_size(t_dlist **args)
 	struct	winsize		screen_size;
 
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &screen_size);
-	(*args)->screen_length = window_size.ws_row;
-	(*args)->screen_width = window_size.ws_col;
+	(*args)->screen_length = screen_size.ws_row;
+	(*args)->screen_width = screen_size.ws_col;
 }
