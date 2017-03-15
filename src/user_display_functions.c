@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 19:28:29 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/13 20:22:19 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/15 10:19:45 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,14 @@ void			display_columns(t_dlist **args)
 	element = (*args)->head;
 	while (element)
 	{
-		display_with_specific_appearance(element);
+		position_cursor_accordingly(args, element);
+		if (check_window_width(args))
+			display_with_specific_appearance(element);
+		else
+		{
+			display_warning_screen();
+			break ;
+		}
 		element = element->next;
 	}
 }
