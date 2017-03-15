@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 16:41:21 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/15 10:02:36 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/15 13:48:08 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,31 @@ typedef struct		s_cycle
 }					t_cycle;
 
 /*
+** warning_screen.c
+*/
+
+void				display_warning_screen(t_dlist *args);
+
+/*
+** moving_cursor_functions.c
+*/
+
+void				move_up(t_dlist **args);
+void				move_down(t_dlist **args);
+void				place_cursor_at(int row, int col);
+
+/*
+** keyboard_keys.c
+*/
+
+int					is_up_arrow_key(int *keyboard);
+int					is_down_arrow_key(int *keyboard);
+
+/*
 ** screen_size_functions.c
 */
 
+int					check_window_width(t_dlist **args);
 int					user_resizes_his_screen(t_dlist **args);
 void				get_screen_size(t_dlist **args);
 

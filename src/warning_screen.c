@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   warning_screen.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 11:13:16 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/15 13:50:49 by ggane            ###   ########.fr       */
+/*   Created: 2017/03/15 13:32:23 by ggane             #+#    #+#             */
+/*   Updated: 2017/03/15 13:35:53 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-int	main(int ac, char **av)
+void		display_warning_screen(t_dlist *args)
 {
-	struct termios	terminal;
-	t_dlist			*args;
-
-	args = stock_arguments(ac, av);
-	open_ft_select_interface(&terminal);
-	activate_user_selection_mode(&args);
-	close_ft_select_interface(&terminal);
-	/* display_user_selection(args); */
-	erase_stocked_arguments(&args);
-	return (0);
+	clear_window();
+	place_cursor_at(args->screen_length / 2, args->screen_width / 2);
+	ft_putstr("WARNING");
 }

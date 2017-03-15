@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/04 11:16:35 by ggane             #+#    #+#              #
-#    Updated: 2017/03/13 18:12:51 by ggane            ###   ########.fr        #
+#    Updated: 2017/03/15 13:49:57 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,13 @@ SRC= src/main.c \
 	 src/print_list_functions.c \
 	 src/generic_display_functions.c \
 	 src/terminal_basic_functions.c \
+	 src/keyboard_keys.c \
 	 src/user_selection_mode.c \
+	 src/user_display_functions.c \
+	 src/screen_size_functions.c \
+	 src/moving_cursor_functions.c \
 	 src/interface.c \
+	 src/warning_screen.c \
 	 src/cursor.c \
 	 src/erase_list_functions.c
 CC= gcc
