@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 18:03:45 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/15 15:48:02 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/15 16:14:00 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static int		user_doesnt_quit_ft_select(t_dlist **args, char *keyboard)
 {
-	ft_bzero(keyboard, KEY_BUFF_SIZE);
-	read(STDIN_FILENO, keyboard, KEY_BUFF_SIZE);
 	if (keyboard[0] == 27 && keyboard[1] == 0 && keyboard[2] == 0)
 		return (0);	
 	else if (keyboard[0] == 10)
@@ -29,7 +27,7 @@ static int		user_doesnt_quit_ft_select(t_dlist **args, char *keyboard)
 static void		check_user_input(t_dlist **args, char *keyboard)
 {
 	get_screen_size(args);
-	read(0, keyboard, KEY_BUFF_SIZE);
+	read(STDIN_FILENO, keyboard, KEY_BUFF_SIZE);
 	if (is_up_arrow_key(keyboard))
 		move_up(args);
 	else if (is_down_arrow_key(keyboard))
