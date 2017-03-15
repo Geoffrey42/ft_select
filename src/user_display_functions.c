@@ -53,22 +53,25 @@ void			display_columns(t_dlist **args)
 {
 	t_cycle	*element;
 	int		row;
+	int		col;
 
 	if (!args)
 		return ;
 	element = (*args)->head;
 	row = 0;
+	col = 0;
+	clear_window();
 	while (element)
 	{
 		/* position_cursor_accordingly(args, element); */
-		place_cursor_at(row++, 0);
-		/* if (check_window_width(args)) */
-		display_with_specific_appearance(element);
-		/*else
+		place_cursor_at(row++, col);
+		if (check_window_width(*args, element->name, col))
+			display_with_specific_appearance(element);
+		else
 		{
 			display_warning_screen(*args);
 			break ;
-		}*/
+		}
 		element = element->next;
 	}
 }

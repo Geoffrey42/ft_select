@@ -12,10 +12,14 @@
 
 #include "ft_select.h"
 
-int		check_window_width(t_dlist **args)
+int		check_window_width(t_dlist *args, char *name, int col)
 {
-	(void)args;
-	return (1);
+	int	largeur;
+
+	largeur = col + ft_strlen(name);
+	if (largeur <= args->screen_width) 
+		return (1);
+	return (0);
 }
 
 int		user_resizes_his_screen(t_dlist **args)

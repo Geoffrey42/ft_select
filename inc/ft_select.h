@@ -21,6 +21,7 @@
 #  include <term.h>
 # endif
 
+# include <termios.h>
 # include <sys/ioctl.h>
 # include "libft.h"
 # define KEY_BUFF_SIZE 3
@@ -76,7 +77,7 @@ int					is_space_bar(char *keyboard);
 ** screen_size_functions.c
 */
 
-int					check_window_width(t_dlist **args);
+int					check_window_width(t_dlist *args, char *name, int col);
 int					user_resizes_his_screen(t_dlist **args);
 void				get_screen_size(t_dlist **args);
 
