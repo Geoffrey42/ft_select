@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 16:41:21 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/15 13:48:08 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/15 15:44:10 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void				place_cursor_at(int row, int col);
 ** keyboard_keys.c
 */
 
-int					is_up_arrow_key(int *keyboard);
-int					is_down_arrow_key(int *keyboard);
+int					is_up_arrow_key(char *keyboard);
+int					is_down_arrow_key(char *keyboard);
 
 /*
 ** screen_size_functions.c
@@ -137,5 +137,14 @@ void				ask_capability(char *str);
 void				clear_window(void);
 void				open_ft_select_interface(struct termios *term);
 void				close_ft_select_interface(struct termios *term);
+
+/*
+** test_functions.c
+*/
+
+void				display_buffer_aside(char *buffer, size_t size, int col);
+void				putstr_aside(char *str, int row, int col);
+void				display_name_aside(t_cycle *element, int col);
+void				display_info_aside(t_dlist *args, int col);
 
 #endif

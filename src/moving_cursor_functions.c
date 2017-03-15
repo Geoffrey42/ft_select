@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 13:15:48 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/15 13:44:13 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/15 15:41:38 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	move_up(t_dlist **args)
 	else
 		cursor = (*args)->tail;
 	cursor->hover = 1;
+	(*args)->cursor_position = cursor;
+	display_name_aside((*args)->cursor_position, 25);
 }
 
 void	move_down(t_dlist **args)
@@ -36,6 +38,8 @@ void	move_down(t_dlist **args)
 	else
 		cursor = (*args)->head;
 	cursor->hover = 1;
+	(*args)->cursor_position = cursor;
+	display_name_aside((*args)->cursor_position, 25);
 }
 
 /* void	position_cursor_accordingly(t_dlist **args, t_cycle *element) */

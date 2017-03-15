@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 19:28:29 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/15 13:45:31 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/15 14:59:37 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,13 @@ void			display_columns(t_dlist **args)
 	{
 		/* position_cursor_accordingly(args, element); */
 		place_cursor_at(row++, 0);
-		if (check_window_width(args))
-			display_with_specific_appearance(element);
-		else
+		/* if (check_window_width(args)) */
+		display_with_specific_appearance(element);
+		/*else
 		{
 			display_warning_screen(*args);
 			break ;
-		}
+		}*/
 		element = element->next;
 	}
 }

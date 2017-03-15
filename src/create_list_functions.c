@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 15:42:55 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/13 20:54:36 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/15 15:49:44 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static t_dlist		*create_dlist(void)
 	new->list_length = 0;
 	new->return_key = 0;
 	new->head = NULL;
+	new->cursor_position = NULL;
 	new->tail = NULL;
 	return (new);
 }
@@ -71,5 +72,6 @@ t_dlist				*stock_arguments(int ac, char **av)
 		append_list(&args, create_new_element(av[i], i));
 		i++;
 	}
+	args->cursor_position = args->head;
 	return (args);
 }
