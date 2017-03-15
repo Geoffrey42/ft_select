@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 13:15:48 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/15 15:41:38 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/15 16:28:22 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	move_up(t_dlist **args)
 		cursor = (*args)->tail;
 	cursor->hover = 1;
 	(*args)->cursor_position = cursor;
-	display_name_aside((*args)->cursor_position, 25);
 }
 
 void	move_down(t_dlist **args)
@@ -39,12 +38,18 @@ void	move_down(t_dlist **args)
 		cursor = (*args)->head;
 	cursor->hover = 1;
 	(*args)->cursor_position = cursor;
-	display_name_aside((*args)->cursor_position, 25);
 }
 
-/* void	position_cursor_accordingly(t_dlist **args, t_cycle *element) */
-/* { */
-/* } */
+void	select_or_unselect_word(t_dlist **args)
+{
+	t_cycle		*cursor;
+
+	cursor = (*args)->cursor_position;
+	if (cursor->is_select)
+		cursor->is_select = 0;
+	else
+		cursor->is_select = 1;
+}
 
 void	place_cursor_at(int row, int col)
 {

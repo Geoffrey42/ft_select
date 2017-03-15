@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 16:41:21 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/15 15:44:10 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/15 16:26:39 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void				display_warning_screen(t_dlist *args);
 void				move_up(t_dlist **args);
 void				move_down(t_dlist **args);
 void				place_cursor_at(int row, int col);
+void				select_or_unselect_word(t_dlist **args);
 
 /*
 ** keyboard_keys.c
@@ -67,6 +68,9 @@ void				place_cursor_at(int row, int col);
 
 int					is_up_arrow_key(char *keyboard);
 int					is_down_arrow_key(char *keyboard);
+int					is_left_arrow_key(char *keyboard);
+int					is_right_arrow_key(char *keyboard);
+int					is_space_bar(char *keyboard);
 
 /*
 ** screen_size_functions.c

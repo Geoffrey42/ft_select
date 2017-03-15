@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 18:03:45 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/15 16:14:00 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/15 16:29:13 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,22 @@ static void		check_user_input(t_dlist **args, char *keyboard)
 		move_up(args);
 	else if (is_down_arrow_key(keyboard))
 		move_down(args);
+	else if (is_space_bar(keyboard))
+		select_or_unselect_word(args);
 }
 
 void			activate_user_selection_mode(t_dlist **args)
 {
 	char		keyboard_buffer[KEY_BUFF_SIZE];
 
-	putstr_aside((*args)->head->name, 0, 15);
+	/*putstr_aside((*args)->head->name, 0, 15);
 	putstr_aside((*args)->tail->name, 1, 15);
-	putstr_aside((*args)->cursor_position->name, 2, 15);
+	putstr_aside((*args)->cursor_position->name, 2, 15);*/
 	while (user_doesnt_quit_ft_select(args, keyboard_buffer))
 	{
 		ft_bzero(keyboard_buffer, KEY_BUFF_SIZE);
 		check_user_input(args, keyboard_buffer);
-		display_buffer_aside(keyboard_buffer, KEY_BUFF_SIZE, 10);
+		/* display_buffer_aside(keyboard_buffer, KEY_BUFF_SIZE, 10); */
 		display_columns(args);
 	}
 }
