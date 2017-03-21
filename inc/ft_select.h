@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 16:41:21 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/15 16:26:39 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/21 10:57:48 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <sys/ioctl.h>
 # include "libft.h"
 # define KEY_BUFF_SIZE 3
+# define SPACE 2
 
 typedef struct		s_dlist
 {
@@ -32,6 +33,7 @@ typedef struct		s_dlist
 	int				screen_length;
 	int				screen_width;
 	int				return_key;
+	int				biggest_word_len;
 	struct s_cycle	*head;
 	struct s_cycle	*cursor_position;
 	struct s_cycle	*tail;
@@ -41,6 +43,7 @@ typedef struct		s_cycle
 {
 	char			*name;
 	int				line;
+	int				col;
 	int				hover;
 	int				is_select;
 	int				node_number;
@@ -99,6 +102,8 @@ void				display_columns(t_dlist **args);
 
 void				turn_cursor_invisible(void);
 void				turn_cursor_visible(void);
+void				position_cursor
+					(t_dlist **args, t_cycle *element, int *row, int *col);
 
 /*
 ** print_list_functions.c
@@ -149,6 +154,7 @@ void				close_ft_select_interface(struct termios *term);
 
 void				display_buffer_aside(char *buffer, size_t size, int col);
 void				putstr_aside(char *str, int row, int col);
+void				putnbr_aside(int nb, int row, int col);
 void				display_name_aside(t_cycle *element, int col);
 void				display_info_aside(t_dlist *args, int col);
 

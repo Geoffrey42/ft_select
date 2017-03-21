@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 15:01:43 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/15 15:43:47 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/21 09:18:24 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ void	putstr_aside(char *str, int row, int col)
 {
 	place_cursor_at(row, col);
 	ft_putstr(str);
+}
+
+void	putnbr_aside(int nb, int row, int col)
+{
+	place_cursor_at(row, col);
+	ft_putnbr(nb);
 }
 
 void	display_name_aside(t_cycle *element, int col)

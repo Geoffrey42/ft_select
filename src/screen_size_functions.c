@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 20:32:26 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/15 13:49:07 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/21 09:25:53 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		user_resizes_his_screen(t_dlist **args)
 {
 	struct	winsize		screen_size;
 	int					length;
-	int					width;	
+	int					width;
 
 	length = (*args)->screen_length;
 	width = (*args)->screen_width;

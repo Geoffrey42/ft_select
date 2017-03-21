@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 18:03:45 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/15 16:29:13 by ggane            ###   ########.fr       */
+/*   Created: 2017/03/21 10:49:57 by ggane             #+#    #+#             */
+/*   Updated: 2017/03/21 10:59:13 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void			activate_user_selection_mode(t_dlist **args)
 	while (user_doesnt_quit_ft_select(args, keyboard_buffer))
 	{
 		ft_bzero(keyboard_buffer, KEY_BUFF_SIZE);
-		check_user_input(args, keyboard_buffer);
 		display_columns(args);
+		check_user_input(args, keyboard_buffer);
 	}
 }

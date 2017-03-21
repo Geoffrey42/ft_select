@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 11:13:16 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/15 13:50:49 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/21 11:06:50 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	main(int ac, char **av)
 	open_ft_select_interface(&terminal);
 	activate_user_selection_mode(&args);
 	close_ft_select_interface(&terminal);
-	/* display_user_selection(args); */
+	if (args->return_key)
+		display_user_selection(args);
 	erase_stocked_arguments(&args);
 	return (0);
 }

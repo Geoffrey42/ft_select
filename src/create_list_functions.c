@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 15:42:55 by ggane             #+#    #+#             */
-/*   Updated: 2017/03/15 15:49:44 by ggane            ###   ########.fr       */
+/*   Updated: 2017/03/21 10:04:34 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ static t_dlist		*create_dlist(void)
 		return (NULL);
 	new->list_length = 0;
 	new->return_key = 0;
+	new->screen_length = 0;
+	new->screen_width = 0;
+	new->biggest_word_len = 0;
 	new->head = NULL;
 	new->cursor_position = NULL;
 	new->tail = NULL;
@@ -34,6 +37,7 @@ static t_cycle		*create_new_element(char *arg, int nb)
 		return (NULL);
 	new->name = ft_strdup(arg);
 	new->line = -1;
+	new->col = -1;
 	new->hover = 0;
 	new->is_select = 0;
 	new->node_number = nb;
